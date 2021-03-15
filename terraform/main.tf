@@ -2,7 +2,7 @@ provider "google" {
   credentials = file("./cred.json")
   region      = "asia-northeast1"
   zone        = "asia-northeast1-c"
-  project = var.project-name
+  project     = var.project-name
 }
 
 resource "google_compute_address" "static" {
@@ -10,14 +10,14 @@ resource "google_compute_address" "static" {
 }
 
 resource "google_compute_instance" "omniscode-server" {
-  name         = "omniscode-server"
-  machine_type = "g1-small"
-  zone         = "asia-northeast1-c"
+  name                      = "omniscode-server"
+  machine_type              = "g1-small"
+  zone                      = "asia-northeast1-c"
   allow_stopping_for_update = true
-  tags = [ "omniscode-port" ]
+  tags                      = ["omniscode-port"]
   boot_disk {
     initialize_params {
-      size = 30
+      size  = 30
       image = "ubuntu-os-cloud/ubuntu-minimal-2004-focal-v20210223a"
     }
   }
