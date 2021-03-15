@@ -1,0 +1,7 @@
+variable "project-name" {
+    default = "XXX"
+}
+
+variable "username" {
+  default = "XXX"
+}
