@@ -1,0 +1,16 @@
+- name: create directory
+  file:
+    path: "/etc/google/auth"
+    state: directory
+    group: root
+    owner: root
+    mode: 0755
+  become: yes
+- name: deploy
+  ansible.builtin.copy:
+    src: "cred.json"
+    dest: "/etc/google/auth/application_default_credentials.json"
+    owner: root
+    group: root
+    mode: 0400
+  become: yes

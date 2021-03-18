@@ -48,11 +48,12 @@
         mode: 0755
         group: "{{ app_user }}"
         owner: "{{ app_user }}"
+      become: yes
     - name: create working directory
       file:
         path: "{{ ansible_env.HOME }}/util-sandbox"
         state: directory
-        mode: '0755'
+        mode: 0755
     - name: install monitoring agent
       get_url:
         url: https://dl.google.com/cloudagents/add-monitoring-agent-repo.sh
@@ -71,3 +72,6 @@
         pkg:
           - stackdriver-agent
       become: yes
+    - name: deploy cred
+      import_role:
+        name: monitor
