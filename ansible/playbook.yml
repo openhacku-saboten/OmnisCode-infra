@@ -75,3 +75,6 @@
     - name: deploy cred
       import_role:
         name: monitor
+    - name: deploy cred
+      import_role:
+        name: gcr-auth

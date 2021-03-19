@@ -1,0 +1,10 @@
+- name: deploy
+  ansible.builtin.copy:
+    src: "cred.json"
+    dest: "{{ ansible_env.HOME }}/util-sandbox/gcr-pull-credential.json"
+    group: "{{ app_user }}"
+    owner: "{{ app_user }}"
+    mode: 0444
+- name: gcr login
+  shell: cat "{{ ansible_env.HOME }}/util-sandbox/gcr-pull-credential.json" | docker login -u _json_key --password-stdin https://asia.gcr.io/
+  become: yes
