@@ -1,0 +1,6 @@
+FROM golang:1.15
+
+WORKDIR /work
+RUN apt-get update
+RUN apt-get install -y netcat
+RUN go get -v github.com/rubenv/sql-migrate/...
