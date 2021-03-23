@@ -20,6 +20,6 @@ jobs:
     - name: Configure docker
       run: gcloud auth configure-docker --quiet
     - name: Build
-      run: docker build -t asia.gcr.io/${{ secrets.GCP_PROJECT_ID }}/migration:$GITHUB_SHA asia.gcr.io/${{ secrets.GCP_PROJECT_ID }}/migration:latest -f ./docker/Dockerfile.migration ./docker
+      run: docker build -t asia.gcr.io/${{ secrets.GCP_PROJECT_ID }}/migration:$GITHUB_SHA -t asia.gcr.io/${{ secrets.GCP_PROJECT_ID }}/migration:latest -f ./docker/Dockerfile.migration ./docker
     - name: Push
       run: docker push asia.gcr.io/${{ secrets.GCP_PROJECT_ID }}/migration --all-tags
